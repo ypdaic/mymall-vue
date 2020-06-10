@@ -15,7 +15,6 @@
       v-model="paths"
       :options="categorys"
       :props="setting"
-      :show-all-levels="false"
     ></el-cascader>
   </div>
 </template>
@@ -23,7 +22,7 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import PubSub from "pubsub-js"
+
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -53,8 +52,6 @@ export default {
       this.paths = this.catelogPath;
     },
     paths(v){
-      console.log("触发路径变更事件");
-      console.log(v);
       this.$emit("update:catelogPath",v);
       //还可以使用pubsub-js进行传值
       this.PubSub.publish("catPath",v);
@@ -68,7 +65,6 @@ export default {
         method: "get"
       }).then(({ data }) => {
         this.categorys = data.data;
-        console.log(this.categorys);
       });
     }
   },

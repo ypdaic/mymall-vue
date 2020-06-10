@@ -4,7 +4,7 @@
 ;(function () {
   window.SITE_CONFIG = {};
 
-  // api接口请求地址,改成走网关
+  // api接口请求地址
   window.SITE_CONFIG['baseUrl'] = 'http://localhost:8086/api';
 
   // cdn地址 = 域名 + 版本号

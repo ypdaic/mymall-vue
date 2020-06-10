@@ -127,7 +127,7 @@ export default {
           this.$http({
             url: this.$http.adornUrl("/product/category/delete"),
             method: "post",
-            data: this.$http.adornData({"ids": catIds}, false)
+            data: this.$http.adornData(catIds, false)
           }).then(({ data }) => {
             this.$message({
               message: "菜单批量删除成功",
@@ -347,7 +347,7 @@ export default {
           this.$http({
             url: this.$http.adornUrl("/product/category/delete"),
             method: "post",
-            data: this.$http.adornData({"ids": ids}, false)
+            data: this.$http.adornData(ids, false)
           }).then(({ data }) => {
             this.$message({
               message: "菜单删除成功",

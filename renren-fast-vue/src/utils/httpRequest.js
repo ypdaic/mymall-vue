@@ -3,6 +3,7 @@ import axios from 'axios'
 import router from '@/router'
 import qs from 'qs'
 import merge from 'lodash/merge'
+import { clearLoginInfo } from '@/utils'
 
 const http = axios.create({
   timeout: 1000 * 30,
@@ -27,10 +28,8 @@ http.interceptors.request.use(config => {
  */
 http.interceptors.response.use(response => {
   if (response.data && response.data.code === 401) { // 401, token失效
-    Vue.cookie.delete('token')
-    router.push({ name: 'login' }, () => {
-      location.reload() // 刷新页面, 清空整站临时存储数据
-    })
+    clearLoginInfo()
+    router.push({ name: 'login' })
   }
   return response
 }, error => {
